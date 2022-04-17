@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container container-md my-5 mx-auto col-8">
+    <h2 class="h2 mb-3 fw-bold">나의 따릉이 이용내역</h2>
+    <table class="table table-hover table-bordered">
+        <tr class="table-success"><th>대여일</th><th>대여한 대여소</th><th>반납한 대여소</th><th>대여시간</th><th>반납시간</th><th>이동거리</th></tr>
+        {% for h in hist %}
+        <tr>
+            <td>{{h.rent_date}}</td>
+            <td>{{h.rent_station}}</td>
+            <td>{{h.return_station}}</td>
+            <td>{{h.rent_time}}</td>
+            <td>{{h.return_time}}</td>
+            <td>{{h.distance}}m</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="btn btn-outline-secondary" href="/history/add">새 이용내역 등록</a>
+</div>
+<div class="container container-md my-5 mx-auto col-8">
+    <h1 class="h2 mb-3 fw-bold border-bottom">나의 따릉이 이용통계</h1>
+    <div>
+        <h5 class="fw-bold mb-2">나의 총 사용시간</h5>
+        <p>{{session['id']}}님의 따릉이 사용시간은 총 ____입니다.</p>
+    </div>
+    <div>
+        <h5 class="fw-bold mb-2">내가 가장 자주 사용한 대여소</h5>
+        <p>{{session['id']}}님이 가장 자주 사용한 대여소는 ____입니다.</p>
+    </div>
+    <div>
+        <h5 class="fw-bold mb-2">내가 기여한 탄소감축량</h5>
+        <p>{{session['id']}}님이 기여한 탄소감축량은 총 ____입니다.</p>
+    </div>
+    <div>
+        <h5 class="fw-bold mb-2">나의 총 운동량</h5>
+        <p>{{session['id']}}님의 따릉이를 통한 운동량은 총 ____입니다.</p>
+    </div>
+</div>
+<div class="container container-md my-5 mx-auto col-8">
+    <h2 class="h2 border-bottom fw-bold">나의 따릉이 사용량 비교하기</h2>
+</div>
+<div class="container container-lg my-5 py-5">
+</div>
+
+{% endblock %}
